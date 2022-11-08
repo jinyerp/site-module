@@ -12,13 +12,13 @@ use Jiny\Table\Http\Controllers\TableController;
 // 관리자 URL
 Route::middleware(['web','auth:sanctum', 'verified'])
 ->name('admin.site.')
-->prefix($prefix.'/site')->group(function () {
+->prefix("jiny/".$prefix.'/site')->group(function () {
 
     Route::resource('/widget', TableController::class);
     Route::resource('/vote', TableController::class);
 
     ## 설정
-    Route::resource('setting', \Jiny\Site\Http\Controllers\Admin\SettingController::class);
+    Route::resource('setting', \Modules\Site\Http\Controllers\Admin\SettingController::class);
 
     // 사이트 데쉬보드
     Route::get('/', [\Modules\Site\Http\Controllers\Admin\AdminSiteDashboard::class, "index"]);
